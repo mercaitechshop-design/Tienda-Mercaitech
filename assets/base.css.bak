@@ -4214,3 +4214,820 @@ product-recommendations:has([data-has-recommendations='false']) {
   }
 }
 
+.header__inline-menu a {
+  color: red !important;
+}
+
+
+/* =====================================================
+   HEADER HORIZON - VERSION PRO CORREGIDA
+   ===================================================== */
+
+
+/* ===== AJUSTES GENERALES ===== */
+.header__column {
+  align-items: center !important;
+}
+
+.menu-list__item {
+  display: flex;
+  align-items: center;
+}
+
+
+/* ===== MENU FIX REAL ===== */
+
+/* Asegura estructura estable */
+header-component .menu-list__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease; /* añadido para flotante */
+}
+
+/* IMPORTANTE: el texto real */
+header-component .menu-list__link span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  transition: all 0.3s ease; /* añadido */
+}
+
+/* Línea */
+header-component .menu-list__link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #6a00ff, #00c3ff);
+  transition: width 0.3s ease;
+}
+
+/* Hover línea */
+header-component .menu-list__link:hover span::after {
+  width: 100%;
+}
+
+/* Activo línea */
+header-component .menu-list__link[aria-current="page"] span::after {
+  width: 100%;
+}
+
+
+/* =====================================================
+   🔥 EFECTO FLOTANTE + COLOR AZUL LIMPIO
+   ===================================================== */
+
+/* Hover flotante */
+header-component .menu-list__link:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 8px #00c3ff);
+}
+
+/* TEXTO azul limpio */
+header-component .menu-list__link:hover span {
+  color: #00c3ff;
+}
+
+/* ACTIVO */
+header-component .menu-list__link[aria-current="page"] span {
+  color: #00c3ff;
+}
+
+
+/* =====================================================
+   LOGO HORIZON - GLOW DEGRADADO REAL
+   ===================================================== */
+
+/* CONTENEDOR LOGO */
+.header-logo {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 FONDO DEGRADADO DETRÁS DEL LOGO */
+.header-logo::before {
+  content: "";
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(50deg, #6a00ff, #00c3ff);
+
+  opacity: 0;
+  filter: blur(20px);
+
+  transition: all 0.35s ease;
+  z-index: -1;
+}
+
+/* 🔥 HOVER ACTIVA GLOW */
+.header-logo:hover::before {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 🔥 EFECTO FLOTANTE */
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+/* 🔥 ASEGURA QUE LA IMAGEN ESTÉ ENCIMA */
+.header-logo__image-container,
+.header-logo__image {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   ICONOS (LOGIN / CARRITO / SEARCH)
+   ===================================================== */
+
+.header-actions__action {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover glow */
+.header-actions__action:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 8px #00c3ff);
+}
+
+/* Línea debajo centrada */
+.header-actions__action::after {
+  content: "";
+  position: absolute;
+
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #6a00ff, #00c3ff);
+  transition: width 0.3s ease;
+}
+
+/* Activación hover */
+.header-actions__action:hover::after {
+  width: 60%;
+}
+
+
+/* =====================================================
+   SVG ICONOS
+   ===================================================== */
+
+.header-actions__action svg {
+  transition: all 0.3s ease;
+}
+
+.header-actions__action:hover svg {
+  color: #00c3ff;
+}
+
+
+/* =====================================================
+   CARRITO (BURBUJA)
+   ===================================================== */
+
+.header-actions__action .cart-count-bubble {
+  background: linear-gradient(90deg, #6a00ff, #00c3ff);
+  color: white;
+  box-shadow: 0 0 10px #00c3ff;
+}
+
+/* ===== BOTÓN WHATSAPP ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  z-index: 9999;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s ease, background 0.2s;
+  animation: pulse-ring 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  background: #1db354;
+  animation: none;
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* Badge de notificación */
+.wa-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ===== MINI CHAT CARD ===== */
+.whatsapp-chat {
+  position: fixed;
+  bottom: 145px;
+  right: 30px;
+  width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.whatsapp-chat.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Header */
+.wc-head {
+  background: #25D366;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wc-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1aab55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.wc-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  background: #80ffb0;
+  border: 2px solid #25D366;
+  border-radius: 50%;
+}
+
+.wc-info { flex: 1; }
+
+.wc-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.wc-status {
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  margin-top: 1px;
+}
+
+.wc-close {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.wc-close:hover { background: rgba(255,255,255,0.28); }
+
+/* Body / mensajes */
+.wc-body {
+  padding: 16px 14px;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 120px;
+}
+
+.wc-bubble {
+  max-width: 85%;
+  padding: 9px 13px;
+  border-radius: 16px 16px 16px 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #fff;
+  border: 0.5px solid rgba(0,0,0,0.06);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.wc-bubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wc-time {
+  font-size: 10px;
+  color: #aaa;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Typing dots */
+.wc-typing {
+  display: flex;
+  gap: 4px;
+  padding: 10px 14px;
+  background: #fff;
+  border-radius: 16px 16px 16px 4px;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.wc-typing.show { opacity: 1; transform: translateY(0); }
+
+.wc-typing span {
+  width: 6px;
+  height: 6px;
+  background: #aaa;
+  border-radius: 50%;
+  animation: tdot 1.2s infinite ease-in-out;
+}
+
+.wc-typing span:nth-child(2) { animation-delay: 0.2s; }
+.wc-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes tdot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40%  { transform: translateY(-5px); opacity: 1; }
+}
+
+.wc-footer {
+  padding: 12px 14px;
+  background: #fff;
+  border-top: 0.5px solid #eee;
+}
+
+.wc-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px;
+  background: #25D366;
+  border-radius: 12px;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.wc-cta:hover {
+  background: #1db354;
+  transform: scale(1.02);
+}
+
+.wc-cta svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+
+.wc-send:hover { background: #1db354; transform: scale(1.07); }
+.wc-send svg { width: 16px; height: 16px; fill: #fff; }
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .whatsapp-chat { right: 16px; bottom: 155px; width: calc(100vw - 32px); max-width: 300px; }
+  .whatsapp-float { bottom: 80px; right: 16px; }
+}
+
+.wc-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+}
+
+.wc-online-dot {
+  width: 7px;
+  height: 7px;
+  background: #80ffb0;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink-dot 2s infinite ease-in-out;
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ===== CARRITO ACTIVO (SOLUCIÓN REAL) ===== */
+body.template-cart #cart-icon-bubble {
+  color: #00c3ff !important;
+}
+
+/* Línea debajo igual que menú */
+body.template-cart #cart-icon-bubble::after {
+  width: 70% !important;
+}
+
+/* =====================================================
+   CONTACT FORM — CLEAN PROFESSIONAL UI
+   ===================================================== */
+
+.contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ===== ESTRUCTURA ===== */
+.contact-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-form__form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (min-width: 750px) {
+  .contact-form__form-row {
+    flex-direction: row;
+  }
+}
+
+/* ===== INPUTS ===== */
+.contact-form__input {
+  width: 100%;
+  padding: 14px 16px;
+
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+
+  background-color: #0f0f0f;
+  color: #eaeaea;
+
+  font-size: 14px;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Placeholder */
+.contact-form__input::placeholder {
+  color: #777;
+}
+
+/* Hover */
+.contact-form__input:hover {
+  border-color: #3a3a3a;
+}
+
+/* Focus (PRO, sin exagerar) */
+.contact-form__input:focus {
+  outline: none;
+  border-color: #00c3ff;
+
+  box-shadow: 0 0 0 1px #00c3ff;
+}
+
+/* TEXTAREA */
+.contact-form__input--textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+/* =====================================================
+   BOTÓN PREMIUM (ESTILO HORIZON PRO - LIMPIO)
+   ===================================================== */
+
+.contact-form button,
+.contact-form input[type="submit"] {
+  margin-top: 14px;
+  padding: 14px 18px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0, 195, 255, 0.25);
+
+  background: linear-gradient(90deg, #6a00ff, #00c3ff);
+  color: #fff;
+
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* ===== HOVER ===== */
+.contact-form button:hover,
+.contact-form input[type="submit"]:hover {
+  border-color: #00c3ff;
+  box-shadow: 0 6px 18px rgba(0, 195, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ===== CLICK ===== */
+.contact-form button:active,
+.contact-form input[type="submit"]:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 195, 255, 0.2);
+}
+
+/* ===== FOCUS ===== */
+.contact-form button:focus-visible,
+.contact-form input[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 195, 255, 0.3);
+}
+/* ===== MENSAJES ===== */
+.contact-form__success {
+  padding: 12px 14px;
+  border-radius: 8px;
+
+  background: #0e2f24;
+  color: #2ee6a6;
+
+  border: 1px solid #1f5c49;
+}
+
+.contact-form__error {
+  padding: 12px 14px;
+  border-radius: 8px;
+
+  background: #2a1212;
+  color: #ff6b6b;
+
+  border: 1px solid #5a1f1f;
+}
+
+/* =====================================================
+   VARIABLES (ESCALABLE DESIGN SYSTEM)
+   ===================================================== */
+:root {
+  --card-radius: 16px;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(0, 195, 255, 0.28);
+  --card-accent: #00c3ff;
+  --card-glow: linear-gradient(120deg, #6a00ff, #00c3ff);
+
+  --transition-fast: 0.25s ease;
+  --transition-smooth: 0.4s cubic-bezier(.25,.8,.25,1);
+}
+
+/* =====================================================
+   CARD BASE (UNIFICADO Y LIMPIO)
+   ===================================================== */
+.card,
+.card-wrapper,
+.product-card,
+.product-card-wrapper,
+.grid__item .card {
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+
+
+  box-shadow: 
+    0 7px 15px rgba(88, 88, 88, 0.16);
+
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+/* =====================================================
+   HOVER (SUAVE Y PREMIUM)
+   ===================================================== */
+.card:hover,
+.card-wrapper:hover,
+.product-card:hover,
+.product-card-wrapper:hover,
+.grid__item .card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--card-accent);
+  box-shadow: 
+    0 10px 25px rgba(0,195,255,0.15),
+    0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* =====================================================
+   GLOW EFECTO (MEJOR PERFORMANCE)
+   ===================================================== */
+.card::after,
+.card-wrapper::after,
+.product-card::after,
+.product-card-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: var(--card-glow);
+  opacity: 0;
+  filter: blur(40px);
+
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.card:hover::after,
+.card-wrapper:hover::after,
+.product-card:hover::after,
+.product-card-wrapper:hover::after {
+  opacity: 0.12;
+}
+
+/* =====================================================
+   IMAGEN (EFECTO PREMIUM)
+   ===================================================== */
+.card img,
+.product-card img {
+  transition: transform var(--transition-smooth);
+  will-change: transform;
+}
+
+.card:hover img,
+.product-card:hover img {
+  transform: scale(1.0);
+}
+
+/* =====================================================
+   CONTENIDO (MEJOR UX ESPACIADO)
+   ===================================================== */
+.card__content,
+.card__information,
+.card__details,
+.card__text,
+.card__caption {
+  padding: 14px 16px 18px;
+}
+
+/* Evita que todo quede pegado abajo */
+.card__information > *:last-child {
+  margin-bottom: 4px;
+}
+
+/* =====================================================
+   TÍTULO (LECTURA + JERARQUÍA)
+   ===================================================== */
+.card__heading,
+.card__heading a,
+.product-card__title {
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.35;
+
+  transition: color var(--transition-fast);
+}
+
+.card:hover .card__heading a,
+.product-card:hover .product-card__title {
+  color: var(--card-accent);
+}
+
+/* =====================================================
+   PRECIO (VISUAL CLARO Y MODERNO)
+   ===================================================== */
+.price {
+  display: block;
+  margin-top: 6px;
+  padding-right: 8px;
+  padding-bottom: 10px;
+
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--card-accent);
+}
+
+/* =====================================================
+   IMAGEN CONTAINER (LIMPIO Y CONSISTENTE)
+   ===================================================== */
+.card-gallery,
+.media {
+  padding: 15px;
+}
+
+.card-gallery img,
+.media img {
+  border-radius: calc(var(--card-radius) - 5px);
+  display: block;
+}
+
+/* =====================================================
+   MICRO-INTERACCIONES (EXTRA PRO)
+   ===================================================== */
+.card:hover {
+  cursor: pointer;
+}
+
+/* Mejora en móviles */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.card__information,
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Fuerza consistencia sin importar el wrapper */
+.card .price,
+.product-card .price {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-top: auto;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+}
+
+
